@@ -6,14 +6,13 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
-import net.minecraft.entity.ai.goal.ProjectileAttackGoal;
+import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.mob.RangedAttackMob;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.ItemStack;
@@ -23,10 +22,11 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 
+import java.util.EnumSet;
 import java.util.List;
 
 /** Элитный скелет: метко стреляет, но в четверти случаев «случайно» целится в другого моба рядом с целью. */
-public class EliteSkeletonEntity extends MadMobEntity implements RangedAttackMob {
+public class EliteSkeletonEntity extends MadMobEntity {
     public EliteSkeletonEntity(EntityType<? extends EliteSkeletonEntity> type, World world) {
         super(type, world);
     }
@@ -57,7 +57,7 @@ public class EliteSkeletonEntity extends MadMobEntity implements RangedAttackMob
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, danceLock());
-        this.goalSelector.add(2, new ProjectileAttackGoal(this, 1.0, 30, 18.0f));
+        this.goalSelector.add(2, new ShootGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0f));
         this.goalSelector.add(7, new LookAroundGoal(this));
@@ -70,7 +70,6 @@ public class EliteSkeletonEntity extends MadMobEntity implements RangedAttackMob
         MadUtil.sound(this, SoundEvents.ENTITY_SKELETON_HURT, 1.0f, 0.9f);
     }
 
-    @Override
     public void shootAt(LivingEntity target, float pullProgress) {
         if (!(getEntityWorld() instanceof ServerWorld sw)) return;
         LivingEntity aim = target;
@@ -91,5 +90,45 @@ public class EliteSkeletonEntity extends MadMobEntity implements RangedAttackMob
         arrow.setVelocity(dx, dy + h * 0.2, dz, 1.6f, 14 - sw.getDifficulty().getId() * 4);
         sw.spawnEntity(arrow);
         MadUtil.sound(this, SoundEvents.ENTITY_SKELETON_SHOOT, 1.0f, 1.0f / (MadUtil.rng().nextFloat() * 0.4f + 0.8f));
+    }
+
+    /** Своя простая цель стрельбы (не зависит от RangedAttackMob). */
+    static class ShootGoal extends Goal {
+        private final EliteSkeletonEntity mob;
+        private int cooldown = 20;
+
+        ShootGoal(EliteSkeletonEntity mob) {
+            this.mob = mob;
+            this.setControls(EnumSet.of(Goal.Control.MOVE, Goal.Control.LOOK));
+        }
+
+        @Override
+        public boolean canStart() {
+            LivingEntity t = mob.getTarget();
+            return t != null && t.isAlive();
+        }
+
+        @Override
+        public boolean shouldContinue() {
+            return canStart();
+        }
+
+        @Override
+        public void tick() {
+            LivingEntity t = mob.getTarget();
+            if (t == null) return;
+            mob.getLookControl().lookAt(t, 30.0f, 30.0f);
+            boolean see = mob.getVisibilityCache().canSee(t);
+            double d = mob.squaredDistanceTo(t);
+            if (d > 18.0 * 18.0 || !see) {
+                mob.getNavigation().startMovingTo(t, 1.0);
+            } else {
+                mob.getNavigation().stop();
+            }
+            if (--cooldown <= 0 && see && d <= 18.0 * 18.0) {
+                mob.shootAt(t, 1.0f);
+                cooldown = 30;
+            }
+        }
     }
 }

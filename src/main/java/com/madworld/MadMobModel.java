@@ -34,8 +34,8 @@ public class MadMobModel extends EntityModel<MadRenderState> {
     @Override
     public void setAngles(MadRenderState s) {
         super.setAngles(s);
-        float swing = s.limbFrequency * 0.6662f;
-        float amp = s.limbAmplitudeMultiplier;
+        float swing = s.limbSwingAnimationProgress * 0.6662f;
+        float amp = s.limbSwingAmplitude;
         head.yaw = s.relativeHeadYaw * DEG;
         head.pitch = s.pitch * DEG;
 

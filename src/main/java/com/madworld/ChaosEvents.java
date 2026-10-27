@@ -342,7 +342,7 @@ public final class ChaosEvents {
                     for (ServerPlayerEntity p : c.players()) {
                         if (p.isOnGround()) {
                             p.addVelocity(0, 0.85, 0);
-                            p.velocityModified = true;
+                            p.networkHandler.sendPacket(new net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket(p));
                             MadUtil.sound(p, SoundEvents.ENTITY_SLIME_JUMP, 0.8f, (float) MadUtil.rnd(0.8, 1.3));
                         }
                     }

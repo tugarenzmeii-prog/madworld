@@ -9,7 +9,7 @@ import com.madworld.util.Advancements;
 import com.madworld.util.MadUtil;
 import com.madworld.util.MobTracker;
 import com.madworld.util.Tasks;
-import net.fabricmc.fabric.api.entity.event.v1.ServerEntityEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;

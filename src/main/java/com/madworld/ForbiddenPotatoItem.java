@@ -38,7 +38,7 @@ public class ForbiddenPotatoItem extends Item {
             }
             case 1 -> {
                 p.addVelocity(0, 1.6, 0);
-                p.velocityModified = true;
+                p.networkHandler.sendPacket(new net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket(p));
                 p.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 300, 0));
                 msg = "Картошка-ракета! Пуск!";
             }

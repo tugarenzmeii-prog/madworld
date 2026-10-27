@@ -32,10 +32,10 @@ public final class ModItems {
     public static final Item GOLDEN_TOILET = ModBlocks.GOLDEN_TOILET_ITEM;
     public static final Item PIG_MAGNET = reg("pig_magnet", s -> new PigMagnetItem(s.maxCount(1).rarity(Rarity.RARE)));
     public static final Item FORBIDDEN_POTATO = reg("forbidden_potato", s -> new ForbiddenPotatoItem(s.maxCount(16).rarity(Rarity.EPIC)
-            .enchantmentGlintOverride(true)
+            .component(net.minecraft.component.DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)
             .food(new FoodComponent.Builder().nutrition(3).saturationModifier(0.3f).alwaysEdible().build())));
     public static final Item GOLDEN_POTATO = reg("golden_potato", s -> new GoldenPotatoItem(s.maxCount(16).rarity(Rarity.UNCOMMON)));
-    public static final Item EMPEROR_CROWN = reg("emperor_crown", s -> new Item(s.maxCount(1).rarity(Rarity.EPIC).enchantmentGlintOverride(true)));
+    public static final Item EMPEROR_CROWN = reg("emperor_crown", s -> new Item(s.maxCount(1).rarity(Rarity.EPIC).component(net.minecraft.component.DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
 
     public static final ItemGroup GROUP = Registry.register(Registries.ITEM_GROUP, MadWorldMod.id("main"),
             FabricItemGroup.builder()
