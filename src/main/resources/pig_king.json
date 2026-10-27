@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "madworld:emperor_crown"
+    },
+    "title": {
+      "text": "Король свиней"
+    },
+    "description": {
+      "text": "Победить Свиного Императора."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ],
+  "parent": "madworld:root"
+}

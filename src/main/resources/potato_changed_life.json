@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "madworld:forbidden_potato"
+    },
+    "title": {
+      "text": "Картошка изменила мою жизнь"
+    },
+    "description": {
+      "text": "Съесть Запрещённую картошку."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ],
+  "parent": "madworld:root"
+}

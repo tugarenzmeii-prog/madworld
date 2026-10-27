@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "madworld:chaos_remote"
+    },
+    "title": {
+      "text": "МИР СОШЁЛ С УМА!"
+    },
+    "description": {
+      "text": "Добро пожаловать. Назад дороги нет."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:gui/advancements/backgrounds/adventure"
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

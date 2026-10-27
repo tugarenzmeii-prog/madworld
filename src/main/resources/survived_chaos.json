@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "madworld:apocalypse_horn"
+    },
+    "title": {
+      "text": "Пережил полный хаос"
+    },
+    "description": {
+      "text": "Пережить 10 безумных событий."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ],
+  "parent": "madworld:root"
+}

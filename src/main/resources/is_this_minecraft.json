@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "madworld:lucky_die"
+    },
+    "title": {
+      "text": "Это точно Minecraft?"
+    },
+    "description": {
+      "text": "Безумие мира достигло половины."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ],
+  "parent": "madworld:root"
+}

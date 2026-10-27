@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "madworld",
+  "version": "${version}",
+  "name": "МИР СОШЁЛ С УМА!",
+  "description": "Безумные мобы, случайные события, странные предметы, Свиной Император и скрытая система безумия.",
+  "authors": ["MadWorld"],
+  "license": "MIT",
+  "icon": "assets/madworld/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.madworld.MadWorldMod"],
+    "client": ["com.madworld.client.MadWorldClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
