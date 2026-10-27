@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "madworld:item/lucky_die"
+  "model": {
+    "type": "minecraft:model",
+    "model": "madworld:item/lucky_die"
   }
 }

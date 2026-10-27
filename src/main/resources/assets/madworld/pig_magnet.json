@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "madworld:item/pig_magnet"
+  "model": {
+    "type": "minecraft:model",
+    "model": "madworld:item/pig_magnet"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "madworld:item/hammer_of_fate"
+  "model": {
+    "type": "minecraft:model",
+    "model": "madworld:item/hammer_of_fate"
   }
 }

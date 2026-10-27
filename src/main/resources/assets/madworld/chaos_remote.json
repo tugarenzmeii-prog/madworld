@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "madworld:item/chaos_remote"
+  "model": {
+    "type": "minecraft:model",
+    "model": "madworld:item/chaos_remote"
   }
 }

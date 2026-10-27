@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "madworld:item/golden_potato"
+  "model": {
+    "type": "minecraft:model",
+    "model": "madworld:item/golden_potato"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "madworld:item/emperor_crown"
+  "model": {
+    "type": "minecraft:model",
+    "model": "madworld:item/emperor_crown"
   }
 }

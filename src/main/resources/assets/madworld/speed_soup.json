@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "madworld:item/speed_soup"
+  "model": {
+    "type": "minecraft:model",
+    "model": "madworld:item/speed_soup"
   }
 }

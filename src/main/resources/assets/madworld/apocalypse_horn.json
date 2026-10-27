@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "madworld:item/apocalypse_horn"
+  "model": {
+    "type": "minecraft:model",
+    "model": "madworld:item/apocalypse_horn"
   }
 }

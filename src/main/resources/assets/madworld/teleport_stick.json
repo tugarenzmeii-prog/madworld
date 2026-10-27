@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "madworld:item/teleport_stick"
+  "model": {
+    "type": "minecraft:model",
+    "model": "madworld:item/teleport_stick"
   }
 }
